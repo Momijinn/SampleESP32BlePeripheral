@@ -1,37 +1,51 @@
-# SampleESP32BlePeripheral
-ESP32でPeripheralとしてBle通信をするサンプルプログラム
+SampleESP32BlePeripheral
+====
+ESP32をPeripheralとしてBle通信をするサンプルプログラム
 
-## 前提
-ESP32をArduino上で動かしています
-
-## 概要
-ESP32をBLEのPeripheral化するプログラムを下記においておきます
-
-Timerを使ってNotifyの更新を行っています
+## Description
+ESP32をPeripheralとしてBle通信を行い、1秒毎ごとに6コのデータを送信しているサンプルプログラム
 
 
-* BLEDevice::init();
+## Requirement
+* ESP32
 
-    デバイス名の設定
+## Usage
+* Arduino上でESP32のプログラムをかけるようにする
+
+    http://www.autumn-color.com/archives/673
+
+* Timerを使ってNotifyの更新を行っています
+
+    * BLEDevice::init();
+
+        デバイス名の設定
 
 
-* BLEServer *pServer = BLEDevice::createServer();
+    * BLEServer *pServer = BLEDevice::createServer();
 
-    Serverの設定
+        Serverの設定
 
-* pCharacteristic = pService->createCharacteristic();
+    * pCharacteristic = pService->createCharacteristic();
 
-* pCharacteristic->addDescriptor(new BLE2902());
+    * pCharacteristic->addDescriptor(new BLE2902());
 
-    サービスの定義(Characteristic)
+        サービスの定義(Characteristic)
 
-* pService->start();
+    * pService->start();
 
-    サーバーのスタート
+        サーバーのスタート
 
-* pServer->getAdvertising()->start();
+    * pServer->getAdvertising()->start();
 
-    アドバタイジングのスタート
+        アドバタイジングのスタート
 
-## blog
-[AutumnColor.com](http://www.autumn-color.com)
+## Install
+* myESP32Peripheral.inoをESP32へ書き込む
+
+## Licence
+This software is released under the MIT License, see LICENSE.
+
+## Author
+[Twitter](https://twitter.com/momijinn_aka)
+
+[Blog](http://www.autumn-color.com/)
